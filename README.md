@@ -2,7 +2,8 @@
 This is a streamlined pipeline for generating multi-TI images from paired T1-weighted MRI acquisitions 
 (e.g., MPRAGE & FGATIR) with identical parameters but different inversion times. 
 You could acquire T1 map, PD map, and multi-TI images at any specified TI value, enabling flexible analysis and enhanced contrast for downstream applications.
-![Pipeline](pipeline.png)
+
+<img src="pipeline.png" alt="Pipeline" width="400">
 
 **Pipeline Steps:**  
 - **Brain Extraction**: HD-BET  
