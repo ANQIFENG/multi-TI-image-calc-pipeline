@@ -248,7 +248,7 @@ Output filenames include specific suffixes indicating their content:
 - `*_pd_map.nii.gz`: PD map.
 - `multi-ti/synT1_xxx.nii.gz`: Multi-TI images, where `xxx` represents the TI value.
 
-### Citation :open_book:
+## Citation :open_book:
 If you find this repository useful, please cite our paper: <br>
 RATNUS: Rapid, Automatic Thalamic Nuclei Segmentation using Multimodal MRI inputs.
 
