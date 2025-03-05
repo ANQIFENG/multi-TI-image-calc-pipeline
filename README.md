@@ -1,7 +1,7 @@
 # multi-TI-image-calc-pipeline
-This is a streamlined pipeline for generating multi-TI images from paired T1-weighted MRI acquisitions 
+This is a streamlined pipeline generating multi-TI images from paired T1-weighted MRI acquisitions 
 (e.g., MPRAGE & FGATIR) with identical parameters but different inversion times. 
-You could acquire T1 map, PD map, and multi-TI images at any specified TI value, enabling flexible analysis and enhanced contrast for downstream applications.
+You could acquire T1 map, PD map, and multi-TI images at any specified TI value, benefiting multiple downstream tasks.
 
 <p align="center">
   <img src="pipeline.png" alt="Pipeline" width="600">
