@@ -26,17 +26,17 @@ This is a streamlined pipeline for generating multi-TI images from paired T1-wei
 
 
 ### Installation
-You can install using Singularity with the following command:
+You can install the Singularity Image with the following command:
 ```bash
 singularity pull --docker-login docker://registry.gitlab.com/anqifeng/smri_pipeline:v1.0.0
 ```
-Alternatively, you can download the Singularity image directly from this [[link](https://mega.nz/file/QzcXmIjK#oJvzHiriYlNroSfR6cp5pWFShmFEoeaPU1l8apmZGp4)].
+Alternatively, you can download the Singularity Image directly from [[link](https://mega.nz/file/QzcXmIjK#oJvzHiriYlNroSfR6cp5pWFShmFEoeaPU1l8apmZGp4)].
 
 
 ### Usage
-You can run the processing pipeline using the following commands. 
-Replace the placeholder paths with the actual paths to your input files and output directory.
-All input data files are expected to be in NIfTI format (`.nii` or `.nii.gz`).
+Run the processing pipeline with the following command, 
+replacing placeholders with actual paths to your input files and output directory. 
+Input files must be in NIfTI format (`.nii` or `.nii.gz`).
 
 Command:
 ```bash
@@ -72,7 +72,7 @@ inversion_time_step=20.0 # ms
 num_workers=8
 whether_save_intermediate=False #bool
 
-# Run the RATNUS model with GPU support 
+# Run multi-TI images calculation pipeline
 singularity run --nv $sif_path \
                 --mprage ${mprage_path} \
                 --fgatir ${fgatir_path} \
