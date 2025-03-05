@@ -227,7 +227,7 @@ The output directory (`/path/to/output`) is organized into four subdirectories:
 
 - `proc`: Stores the output NIfTI files.
 - `log`: Stores the logs from the processing steps.
-- `qa`: Stores the images for Quality Assurance (QA). It allows for a quick review of the results.
+- `qa`: Stores QA images for quick result review.
 - `tmp`: Stores temporary results (only created if `save_intermediate=True`).
 
 #### Output Files
