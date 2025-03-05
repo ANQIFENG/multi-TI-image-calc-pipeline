@@ -4,7 +4,7 @@ This is a streamlined pipeline for generating multi-TI images from paired T1-wei
 You could acquire T1 map, PD map, and multi-TI images at any specified TI value, enabling flexible analysis and enhanced contrast for downstream applications.
 
 <p align="center">
-  <img src="pipeline.jpg" alt="Pipeline" width="600">
+  <img src="pipeline.png" alt="Pipeline" width="600">
 </p>
 
 **Pipeline Steps:**  
