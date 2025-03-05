@@ -104,7 +104,7 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">mprage</td>
         <td style="text-align: left;"> 
           <ul>
-              <li> Path to your MPRAGE image file. </li>
+              <li> Path to the MPRAGE image file. </li>
           </ul>
         </td>
         <td style="text-align: center;">✅</td>
@@ -113,7 +113,7 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">fgatir</td>
         <td style="text-align: left;"> 
           <ul>
-              <li> Path to your FGATIR image file. </li>
+              <li> Path to the FGATIR image file. </li>
           </ul>
         </td>
         <td style="text-align: center;">✅</td>
@@ -122,7 +122,7 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">out_dir</td>
         <td style="text-align: left;"> 
           <ul>
-              <li> Path to the directory where you want the output to be stored. </li>
+              <li> Directory where output files will be stored. </li>
           </ul>
         </td>
         <td style="text-align: center;">✅</td>
@@ -131,9 +131,8 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">tr</td>
         <td style="text-align: left;">
           <ul>
-            <li>Repetition time (TR) for both your MPRAGE and FGATIR images.</li>
-            <li> For synthesizing Multi-TI images, the TR of MPRAGE and FGATIR must be equal. While TI values vary, TR should remain consistent to ensure image comparability. </li>
-            <li> Used for T1/PD calculation and Multi-TI synthesis.</li>
+            <li> Repetition time (TR) for both the MPRAGE and FGATIR images.</li>
+            <li> Used for T1/PD calculation and Multi-TI synthesis. </li>
           </ul>
         </td>
         <td style="text-align: center;">✅</td>
@@ -142,7 +141,7 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">ti_mprage</td>
         <td style="text-align: left;">
           <ul>
-            <li> Inversion time (TI) for your MPRAGE image.</li>
+            <li> Inversion time (TI) for the MPRAGE image.</li>
             <li> Used for T1/PD calculation. </li>
           </ul>
         </td>
@@ -152,7 +151,7 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">ti_fgatir</td>
         <td style="text-align: left;">
           <ul>
-            <li> Inversion time (TI) for your FGATIR image.</li>
+            <li> Inversion time (TI) for the FGATIR image.</li>
             <li> Used for T1/PD calculation. </li>
           </ul>
         </td>
@@ -160,39 +159,41 @@ singularity run --nv $sif_path \
       </tr>
       <tr>
         <td style="text-align: center;">ti_min</td>
-        <td style="text-align: left;" rowspan="3"> 
+        <td style="text-align: left;"> 
           <ul>
-              <li> These parameters define the range and increments for synthesizing Multi-TI images. Specifically, ti_min sets the minimum inversion time, ti_max sets the maximum inversion time, and ti_step defines the increment between each TI value. </li>
-              <li> The default values are 400 ms for ti_min, 1400 ms for ti_max, and 20 ms for ti_step. </li>
-              <li> By varying the TI within this default range, a set of 51 images is generated. This range is chosen to maximize contrast in the thalamus, revealing its internal structure with enhanced clarity.</li>
-        </ul>
+              <li> Minimum inversion time (TI) for Multi-TI image synthesis. </li> 
+          </ul>
         </td>
-        <td style="text-align: center;">🟡</td>
+        <td style="text-align: center;">✅</td>
       </tr>
       <tr>
         <td style="text-align: center;">ti_max</td>
-        <td style="text-align: center;">🟡</td>
+          <ul>
+              <li> Maximum inversion time (TI) for Multi-TI image synthesis. </li> 
+          </ul>
+        <td style="text-align: center;">✅</td>
       </tr>
       <tr>
         <td style="text-align: center;">ti_step</td>
-        <td style="text-align: center;">🟡</td>
+          <ul>
+              <li> Increment between Minimum TI and Maximum TI for Multi-TI image synthesis. </li> 
+          </ul>
+        <td style="text-align: center;">✅</td>
       </tr>
       <tr>
         <td style="text-align: center;">num_workers</td>
         <td style="text-align: left;">
           <ul>
-          <li> Number of CPU cores for parallel processing.</li>
-          <li> The default value is 8.</li>
+          <li> Number of CPU cores for parallel processing. </li>
           </ul>
         </td>
-        <td style="text-align: center;">🟡</td>
+        <td style="text-align: center;">✅</td>
       </tr>
       <tr>
         <td style="text-align: center;">save_intermediate</td>
         <td style="text-align: left;">
           <ul>
-          <li> Flag to save intermediate results. Boolean value, can be True or False. </li>
-          <li> The default value is False.</li>    
+          <li> Boolean flag to save intermediate results (True or False). Default: False. </li>
         </ul>
         </td>
         <td style="text-align: center;">🟡</td>
@@ -200,7 +201,7 @@ singularity run --nv $sif_path \
     </tbody>
   </table>
 </div>
-✅ indicates required parameters. 🟡 indicates optional parameters, if not provided, the default values will be used.
+✅ Required parameters. 🟡 Optional parameters (defaults applied if not provided).
 
 ### Outputs
 #### Output Structure
@@ -225,7 +226,7 @@ The output directory (`/path/to/output`) is organized into four subdirectories:
 - `qa`: This directory stores the images for Quality Assurance (QA). It allows for a quick review of the results.
 - `tmp`: This directory stores temporary results. This directory is created only if save_intermediate is set to True.
 
-##### Output Files
+#### Output Files
 RATNUS generates multiple output NIfTI files in `proc` directory. 
 The output file names have specific suffixes that represent their content. 
 Below is a list of the output files and their descriptions:
