@@ -19,13 +19,13 @@ This is a streamlined pipeline for generating multi-TI images from paired T1-wei
 
 
 
-# How to run :runner:
-## Prerequisites
+## How to run :runner:
+### Prerequisites
 - **Operating System:** Linux or OSX.
 - **Hardware:** GPU is required.
 
 
-## Installation
+### Installation
 You can install using Singularity with the following command:
 ```bash
 singularity pull --docker-login docker://registry.gitlab.com/anqifeng/smri_pipeline:v1.0.0
@@ -33,9 +33,9 @@ singularity pull --docker-login docker://registry.gitlab.com/anqifeng/smri_pipel
 Alternatively, you can download the Singularity image directly from this [[link](https://mega.nz/file/QzcXmIjK#oJvzHiriYlNroSfR6cp5pWFShmFEoeaPU1l8apmZGp4)].
 
 
-## Usage
+### Usage
 You can run the processing pipeline using the following commands. 
-Replace the placeholder paths with the actual paths to your input files and specify the output directory.
+Replace the placeholder paths with the actual paths to your input files and output directory.
 All input data files are expected to be in NIfTI format (`.nii` or `.nii.gz`).
 
 Command:
@@ -53,15 +53,14 @@ singularity run -e --nv smri_pipeline.sif \
             --num_workers ${number_of_workers_for_parallel_processing} \
             --save_intermediate ${flag_to_save_intermediate_results}
  ```   
-For a detailed explanation of the parameters, see [here](https://github.com/ANQIFENG/RATNUS?tab=readme-ov-file#inputs).
 
 Example bash script:
 ```bash
 #!/bin/bash
 
 # Define paths to your data, output directory and singularity image
-mprage_path="./MTBI-MRCON0001_v1_T1w.nii.gz"
-fgatir_path="./MTBI-MRCON0001_v1_FGATIR.nii.gz"
+mprage_path="./MPRAGE.nii.gz"
+fgatir_path="./FGATIR.nii.gz"
 output_dir="./ratnus_outputs"
 sif_path="./smri_pipeline_v1.0.0.sif"
 repetition_time=4000.0 # ms
@@ -72,10 +71,25 @@ inversion_time_max=1400.0 # ms
 inversion_time_step=20.0 # ms
 num_workers=8
 whether_save_intermediate=False #bool
+
+# Run the RATNUS model with GPU support 
+singularity run --nv $sif_path \
+                --mprage ${mprage_path} \
+                --fgatir ${fgatir_path} \
+                --out_dir ${output_dir} \
+                --tr ${repetition_time} \
+                --ti_mprage ${inversion_time_mprage} \
+                --ti_fgatir ${inversion_time_fgatir} \
+                --ti_min ${inversion_time_min} \
+                --ti_max ${inversion_time_max} \
+                --ti_step ${inversion_time_step} \
+                --num_workers ${num_workers} \
+                --save_intermediate ${whether_save_intermediate}
 ```
 
 
-#### Inputs 
+## Details :brain:
+### Inputs 
 <div style="text-align: center;">
   <table>
     <thead>
@@ -188,11 +202,8 @@ whether_save_intermediate=False #bool
 </div>
 ✅ indicates required parameters. 🟡 indicates optional parameters, if not provided, the default values will be used.
 
-#### Outputs 
-This repository's Singularity containers are built based on [RADIFOX](https://github.com/jh-mipc/radifox?tab=readme-ov-file#processingmodule), 
-and our file organization follows the rules outlined in RADIFOX.
-
-##### Output Structure
+### Outputs
+#### Output Structure
 The output directory (`/path/to/output`) is organized into four subdirectories:
 
 ``` 
@@ -231,3 +242,17 @@ Below is a list of the output files and their descriptions:
 - `*_t1_map.nii.gz`: T1 map.
 - `*_pd_map.nii.gz`: PD map.
 - `multi-ti/synT1_xxx.nii.gz`: Multi-TI images, where `xxx` represents the TI value.
+
+### Citation
+If you find this repository useful, please cite our paper: 
+**RATNUS: Rapid, Automatic Thalamic Nuclei Segmentation using Multimodal MRI inputs**.
+BibTeX:
+```bibtex
+@article{feng2024ratnus,
+  title={RATNUS: Rapid, Automatic Thalamic Nuclei Segmentation using Multimodal MRI inputs},
+  author={Feng, Anqi and Bian, Zhangxing and Dewey, Blake E and Colinco, Alexa Gail and Zhuo, Jiachen and Prince, Jerry L},
+  journal={arXiv preprint arXiv:2409.06897},
+  year={2024}
+}
+}
+
