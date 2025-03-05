@@ -168,17 +168,21 @@ singularity run --nv $sif_path \
       </tr>
       <tr>
         <td style="text-align: center;">ti_max</td>
+        <td style="text-align: left;"> 
           <ul>
               <li> Maximum inversion time (TI) for Multi-TI image synthesis. </li> 
           </ul>
-        <td style="text-align: center;">✅</td>
+        </td> 
+        <td style="">✅</td>
       </tr>
       <tr>
         <td style="text-align: center;">ti_step</td>
+        <td style="text-align: left;"> 
           <ul>
               <li> Increment between Minimum TI and Maximum TI for Multi-TI image synthesis. </li> 
           </ul>
-        <td style="text-align: center;">✅</td>
+        </td> 
+        <td style="">✅</td>
       </tr>
       <tr>
         <td style="text-align: center;">num_workers</td>
