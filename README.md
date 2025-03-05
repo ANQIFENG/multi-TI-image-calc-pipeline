@@ -1,18 +1,21 @@
 # multi-TI-image-calc-pipeline
-A pipeline for generating multi-TI images from pairs of T1-weighted MRI acquisitions (e.g., MPRAGE and FGATIR) with identical parameters but different inversion times. 
-The  pipeline contains the following steps in sequence:
-- HD-BET Brain Extraction
-- Registration to MNI space
-- N4 Bias Field Correction
-  - Calculate N4 Bias Field for T1-weighted MRI images
-  - Calculate Harmonic Bias Field based on the Bias Fields
-  - Perform Bias Field Correction using the Harmonic Bias Field
-- Calculate Background Mask
-- Calculate White Matter Mask
-- Fuzzy C-means White Matter Mean Normalization
-  - Perform Intensity Normalization using the same normalization factor to normalize MPRAGE and FGATIR
-- Calculate T1 and PD maps
-- Synthesize Multi-TI images from T1 and PD maps 
+This is a streamlined pipeline for generating multi-TI images from paired T1-weighted MRI acquisitions 
+(e.g., MPRAGE & FGATIR) with identical parameters but different inversion times.
+
+## **Pipeline Steps:**  
+- **Brain Extraction**: HD-BET  
+- **Registration**: Align to MNI space  
+- **Bias Field Correction**:  
+  - Compute N4 bias field for T1-weighted images  
+  - Derive harmonic bias field  
+  - Apply correction using the harmonic bias field  
+- **Mask Computation**:  
+  - Background mask  
+  - White matter mask  
+- **Intensity Normalization**: Fuzzy C-means white matter mean normalization  
+- **Map Computation**:  
+  - Generate T1 and PD maps  
+  - Synthesize multi-TI images from these maps  
 
 
 
