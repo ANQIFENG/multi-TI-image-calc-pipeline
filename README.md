@@ -244,8 +244,10 @@ Below is a list of the output files and their descriptions:
 - `multi-ti/synT1_xxx.nii.gz`: Multi-TI images, where `xxx` represents the TI value.
 
 ### Citation
-If you find this repository useful, please cite our paper:  \\
+If you find this repository useful, please cite our paper:
+
 RATNUS: Rapid, Automatic Thalamic Nuclei Segmentation using Multimodal MRI inputs.
+
 ```bibtex
 @article{feng2024ratnus,
   title={RATNUS: Rapid, Automatic Thalamic Nuclei Segmentation using Multimodal MRI inputs},
