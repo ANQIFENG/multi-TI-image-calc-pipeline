@@ -225,10 +225,10 @@ The output directory (`/path/to/output`) is organized into four subdirectories:
         └── [temporary results]
 ```
 
-- `proc`: This directory stores the output NIfTI files.
-- `log`: This directory stores the logs from the processing steps.
-- `qa`: This directory stores the images for Quality Assurance (QA). It allows for a quick review of the results.
-- `tmp`: This directory stores temporary results. This directory is created only if save_intermediate is set to True.
+- `proc`: Stores the output NIfTI files.
+- `log`: Stores the logs from the processing steps.
+- `qa`: Stores the images for Quality Assurance (QA). It allows for a quick review of the results.
+- `tmp`: Stores temporary results (only created if `save_intermediate=True`).
 
 #### Output Files
 RATNUS generates multiple output NIfTI files in `proc` directory. 
