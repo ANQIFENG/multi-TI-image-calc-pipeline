@@ -2,11 +2,11 @@
 This is a streamlined pipeline for generating multi-TI images from paired T1-weighted MRI acquisitions 
 (e.g., MPRAGE & FGATIR) with identical parameters but different inversion times.
 
-## **Pipeline Steps:**  
+**Pipeline Steps:**  
 - **Brain Extraction**: HD-BET  
-- **Registration**: Align to MNI space  
+- **Registration**: Co-register to MNI space  
 - **Bias Field Correction**:  
-  - Compute N4 bias field for T1-weighted images  
+  - Compute N4 bias field for both T1-weighted images  
   - Derive harmonic bias field  
   - Apply correction using the harmonic bias field  
 - **Mask Computation**:  
