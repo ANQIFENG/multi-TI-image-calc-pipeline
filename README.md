@@ -1,6 +1,7 @@
 # multi-TI-image-calc-pipeline
 This is a streamlined pipeline for generating multi-TI images from paired T1-weighted MRI acquisitions 
-(e.g., MPRAGE & FGATIR) with identical parameters but different inversion times.
+(e.g., MPRAGE & FGATIR) with identical parameters but different inversion times. 
+You could acquire T1 map, PD map, and multi-TI images at any specified TI value, enabling flexible analysis and enhanced contrast for downstream applications.
 
 **Pipeline Steps:**  
 - **Brain Extraction**: HD-BET  
@@ -197,7 +198,7 @@ singularity run --nv $sif_path \
         <td style="text-align: center;">save_intermediate</td>
         <td style="text-align: left;">
           <ul>
-          <li> Boolean flag to save intermediate results (True or False). Default: False. </li>
+          <li> Boolean flag to save intermediate results (`True` or `False`). Default: False. </li>
         </ul>
         </td>
         <td style="text-align: center;">🟡</td>
@@ -231,16 +232,15 @@ The output directory (`/path/to/output`) is organized into four subdirectories:
 - `tmp`: Stores temporary results (only created if `save_intermediate=True`).
 
 #### Output Files
-RATNUS generates multiple output NIfTI files in `proc` directory. 
-The output file names have specific suffixes that represent their content. 
-Below is a list of the output files and their descriptions:
+The pipeline generates multiple NIfTI files in `proc` directory. 
+Output filenames include specific suffixes indicating their content:
 
-- `*_reg_thre.nii.gz`: MPRAGE and FGATIR images registered to MNI space.
-- `*_transform.mat`: Transformation matrix for MPRAGE and FGATIR registration.
-- `*_n4sqrt.nii.gz`: MPRAGE and FGATIR images after N4 bias field correction.
-- `*_bias.nii.gz`: Bias field for MPRAGE and FGATIR images.
+- `*_reg_thre.nii.gz`: Images registered to MNI space.
+- `*_transform.mat`: Transformation matrix for registration.
+- `*_n4sqrt.nii.gz`: Images after N4 bias field correction.
+- `*_bias.nii.gz`: Bias field for separate images.
 - `*_harmonic_bias.nii.gz`: Harmonic bias field.
-- `*_wmn.nii.gz`: MPRAGE and FGATIR images after white matter mean normalization. Finish processing stage, ready for further calculations such as PD and T1 maps.
+- `*_wmn.nii.gz`: Images after white matter mean normalization, ready for T1 and PD maps calculations.
 - `*_wm_mask.nii.gz`: White matter mask in MNI space.
 - `*_bg_mask.nii.gz`: Background mask in MNI space.
 - `*_brain_mask.nii.gz`: Brain mask in MNI space.
@@ -248,7 +248,7 @@ Below is a list of the output files and their descriptions:
 - `*_pd_map.nii.gz`: PD map.
 - `multi-ti/synT1_xxx.nii.gz`: Multi-TI images, where `xxx` represents the TI value.
 
-### Citation
+### Citation :open_book:
 If you find this repository useful, please cite our paper: <br>
 RATNUS: Rapid, Automatic Thalamic Nuclei Segmentation using Multimodal MRI inputs.
 
